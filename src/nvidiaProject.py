@@ -12,7 +12,7 @@ def wait_and_click(element, wait_time=0) :
     element.click
 
 
-service = Service(executable_path="../assets/chromedriver.exe")
+service = Service(executable_path="../lib/chromedriver.exe")
 driver = webdriver.Chrome(service=service)
 
 driver.get("https://www.nvidia.com/en-us/geforce/graphics-cards/")
