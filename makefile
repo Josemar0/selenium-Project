@@ -1,14 +1,12 @@
 venv_dir = venv
 
-run:
-	python3 src/nvidiaProject.py
+run:venv/bin/activate
+	./$(venv_dir)/bin/python3 src/nvidiaProject.py
 
-venv:
-	pip install virtualenv
-	virtualenv $(venv_dir)
-
-activate:
-	source $(venv_dir)/bin/activate
-	pip install -U selenium
+venv/bin/activate:requirements.txt
+	python3 -m venv $(venv_dir)
+	./$(venv_dir)/bin/pip install -r requirements.txt
+	
 clean:
+	rm -rf __pycache__
 	rm -rf venv
