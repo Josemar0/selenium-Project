@@ -5,6 +5,7 @@ run:venv/bin/activate
 
 venv/bin/activate:requirements.txt
 	python3 -m venv $(venv_dir)
+	@echo -e "Creating virtual environment...\n"
 	./$(venv_dir)/bin/pip install -r requirements.txt
 	
 clean:
