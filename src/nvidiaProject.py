@@ -11,15 +11,13 @@ def wait_and_click(element, wait_time=0) :
     time.sleep(wait_time)
     element.click
 
-
-service = Service(executable_path="../lib/chromedriver.exe")
-driver = webdriver.Chrome(service=service)
+driver = webdriver.Chrome()
 
 driver.get("https://www.nvidia.com/en-us/geforce/graphics-cards/")
 
 WebDriverWait(driver,5).until(
     EC.presence_of_element_located((By.CLASS_NAME, "sub-brand-item"))
-)
+ )
 product_menu = driver.find_element(By.CLASS_NAME, "sub-brand-item")
 
 wait_and_click(product_menu)
@@ -39,4 +37,6 @@ product_name = driver.find_element(By.XPATH, "//div[contains(text(),'RTX 5090')]
 wait_and_click(product_name)
 
 time.sleep(5)
+
+driver.quit()
 
