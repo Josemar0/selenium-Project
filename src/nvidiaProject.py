@@ -29,7 +29,6 @@ for button in buttons:
         WebDriverWait(driver,5).until(
             EC.element_to_be_clickable(button)
         )
-        print("clicking...")
         button.click()
         break
 
@@ -42,12 +41,20 @@ for button in buttons:
         WebDriverWait(driver,5).until(
             EC.element_to_be_clickable(button)
         )
-        print("clicking...")
         button.click()
         break
 
+card_names = driver.find_elements(By.XPATH,"//h3[contains(text(),'GeForce RTX')]")
+starting_prices = driver.find_elements(By.XPATH,"//div[contains(text(),'Starting at $')")
 
+print("Card Names: ")
+for name in card_names:
+    print(name.text)
 
+for price in starting_prices:
+    print("Price: ")
+    print(price.text)
 time.sleep(5)
+
 driver.quit()
 
