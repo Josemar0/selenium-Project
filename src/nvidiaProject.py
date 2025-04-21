@@ -106,7 +106,7 @@ if(series != "40"):
 
     with open(file_name,"w") as f:
         for i in range(len(products)):
-            f.write(f"{products[i].text}\nPrice: {product_prices[i].text},99")
+            f.write(f"{products[i].text}\nPrice: {product_prices[i].text},99\n")
         
 
 time.sleep(15)
