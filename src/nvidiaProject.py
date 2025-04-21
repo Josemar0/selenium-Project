@@ -9,6 +9,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.relative_locator import locate_with
 
 import time
+import datetime
 
 driver = uc.Chrome()
 driver.set_window_size(1024,1024)
@@ -63,7 +64,6 @@ if(series != "40"):
     card_name = input("Select Card: ")
 
     card = None
-
     for name in card_names:
         if name.text and card_name in name.text:
             card = name
@@ -95,19 +95,19 @@ if(series != "40"):
     products = driver.find_elements(By.CLASS_NAME,"nv-productTitle")
     product_prices = driver.find_elements(By.XPATH,'//span[contains(text(),"$")]')
 
-    # for product in products:
-    #     print(product.text)
-    #     time.sleep(1)
-
-    # print("prices start")
-    # for price in product_prices:
-    #     print(price.text)
-    #     time.sleep(1)
-    # print("prices done")
+    date = datetime.datetime.now()
+    date_string = date.strftime("%m-%d-%y")
 
     for i in range(len(products)):
         print(products[i].text, "\nPrice: ",product_prices[i].text,"99")
         time.sleep(1)
+
+    file_name = f"{card_name}_{date_string}.txt"
+
+    with open(file_name,"w") as f:
+        for i in range(len(products)):
+            f.write(f"{products[i].text}\nPrice: {product_prices[i].text},99")
+        
 
 time.sleep(15)
 
