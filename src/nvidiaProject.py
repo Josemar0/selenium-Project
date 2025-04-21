@@ -93,14 +93,20 @@ if(series != "40"):
     driver.execute_script("arguments[0].click();", cookies)
     
     products = driver.find_elements(By.CLASS_NAME,"nv-productTitle")
-    product_prices = driver.find_elements(By.CLASS_NAME,"decimal")
-    for product in products:
-        print(product.text)
-        time.sleep(1)
+    product_prices = driver.find_elements(By.XPATH,'//span[contains(text(),"$")]')
 
+    # for product in products:
+    #     print(product.text)
+    #     time.sleep(1)
 
-    for price in product_prices:
-        print(price.text)
+    # print("prices start")
+    # for price in product_prices:
+    #     print(price.text)
+    #     time.sleep(1)
+    # print("prices done")
+
+    for i in range(len(products)):
+        print(products[i].text, "\nPrice: ",product_prices[i].text,"99")
         time.sleep(1)
 
 time.sleep(15)
